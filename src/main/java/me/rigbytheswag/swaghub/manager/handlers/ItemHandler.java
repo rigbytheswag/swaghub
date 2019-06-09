@@ -16,10 +16,18 @@ public class ItemHandler extends Manager {
         super(managerHandler);
     }
 
-    public ItemStack SERVER_SELECTOR = build(Material.COMPASS, "&c&lServer Selector");
+    public ItemStack SERVER_SELECTOR = build(getMaterialFromConfigString("serverSelector"), getItemNameFromConfig("serverSelector"));
 
     public ItemStack getServerSelector() {
         return SERVER_SELECTOR;
+    }
+
+    public Material getMaterialFromConfigString(String string) {
+        return Material.getMaterial(managerHandler.getPlugin().getConfig().getString("items." + string + ".item"));
+    }
+
+    public String getItemNameFromConfig(String string) {
+        return ChatColor.translateAlternateColorCodes('&', managerHandler.getPlugin().getConfig().getString("items." + string + ".name"));
     }
 
     public ItemStack build(Material type, String displayName, String... lore) {

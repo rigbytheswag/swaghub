@@ -1,0 +1,4 @@
+items:
+  serverSelector:
+    name: "&a&lServer Selector"
+    item: COMPASS
