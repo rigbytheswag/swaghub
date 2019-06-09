@@ -5,6 +5,7 @@ import me.rigbytheswag.swaghub.listeners.PlayerListener;
 import me.rigbytheswag.swaghub.listeners.PlayerMiscListener;
 import me.rigbytheswag.swaghub.listeners.WorldListener;
 import me.rigbytheswag.swaghub.listeners.features.DoubleJumpListener;
+import me.rigbytheswag.swaghub.listeners.features.LaunchpadListener;
 import me.rigbytheswag.swaghub.listeners.features.items.SpeedBoostListener;
 import me.rigbytheswag.swaghub.manager.ManagerHandler;
 import org.bukkit.entity.Player;
@@ -15,6 +16,8 @@ import java.util.UUID;
 
 public final class HubPlugin extends JavaPlugin {
 
+    private static HubPlugin plugin;
+
     private Map<UUID, Player> playerMap = Maps.newHashMap();
 
     private ManagerHandler managerHandler;
@@ -22,6 +25,8 @@ public final class HubPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        plugin = this;
+
         saveDefaultConfig();
         registerManagers();
         registerListeners();
@@ -46,6 +51,10 @@ public final class HubPlugin extends JavaPlugin {
         if (getConfig().getBoolean("features.doubleJump")) {
             getServer().getPluginManager().registerEvents(new DoubleJumpListener(), this);
         }
+
+        if (getConfig().getBoolean("features.launchpad")) {
+            getServer().getPluginManager().registerEvents(new LaunchpadListener(), this);
+        }
     }
 
     public Map<UUID, Player> getPlayerMap() {
@@ -54,5 +63,9 @@ public final class HubPlugin extends JavaPlugin {
 
     public ManagerHandler getManagerHandler() {
         return managerHandler;
+    }
+
+    public static HubPlugin getPlugin() {
+        return plugin;
     }
 }
