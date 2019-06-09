@@ -1,0 +1,5 @@
+name: SwagHub
+version: ${project.version}
+main: me.rigbytheswag.swaghub.HubPlugin
+authors: [rigbytheswag]
+description: swag hub plugin for people with swag
