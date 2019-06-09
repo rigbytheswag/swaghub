@@ -1,3 +1,8 @@
+messages:
+  speed-boost:
+    enabled: "&aGotta go fast..."
+    disabled: "&cWe going slow now..."
+
 features:
   doubleJump: true
 
