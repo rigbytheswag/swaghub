@@ -23,13 +23,8 @@ public class SpeedBoostListener implements Listener {
 
     public SpeedBoostListener(HubPlugin plugin) {
         this.plugin = plugin;
-    }
-
-    public void onEnable() {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
 
-    public void onDisable() {
         for (Player player : plugin.getPlayerMap().values()) {
             player.removePotionEffect(PotionEffectType.SPEED);
         }
