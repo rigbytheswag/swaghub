@@ -17,9 +17,24 @@ public class ItemHandler extends Manager {
     }
 
     public ItemStack SERVER_SELECTOR = build(getMaterialFromConfigString("serverSelector"), getItemNameFromConfig("serverSelector"));
+    public ItemStack SERVER_STORE = build(getMaterialFromConfigString("serverStore"), getItemNameFromConfig("serverStore"));
+    public ItemStack SPEED_BOOST = build(getMaterialFromConfigString("speedBoost"), getItemNameFromConfig("speedBoost"));
+    public ItemStack SETTINGS = build(getMaterialFromConfigString("settings"), getItemNameFromConfig("settings"));
 
-    public ItemStack getServerSelector() {
+    public ItemStack getServerSelectorItem() {
         return SERVER_SELECTOR;
+    }
+
+    public ItemStack getServerStoreItem() {
+        return SERVER_STORE;
+    }
+
+    public ItemStack getSpeedBoostItem() {
+        return SPEED_BOOST;
+    }
+
+    public ItemStack getSettingsItem() {
+        return SETTINGS;
     }
 
     public Material getMaterialFromConfigString(String string) {

@@ -1,4 +1,17 @@
 items:
   serverSelector:
-    name: "&a&lServer Selector"
+    enabled: true
     item: COMPASS
+    name: "&a&lServer Selector"
+  serverStore:
+    enabled: true
+    item: DIAMOND
+    name: "&9Store"
+  speedBoost:
+    enabled: true
+    item: SUGAR
+    name: "&bGotta go Fast"
+  settings:
+    enabled: true
+    item: COMPASS
+    name: "&7Settings"
