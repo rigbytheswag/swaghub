@@ -5,6 +5,8 @@ import me.rigbytheswag.swaghub.manager.Manager;
 import me.rigbytheswag.swaghub.manager.ManagerHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -12,8 +14,11 @@ import java.util.List;
 
 public class ItemHandler extends Manager {
 
+    private FileConfiguration config;
+
     public ItemHandler(ManagerHandler managerHandler) {
         super(managerHandler);
+        this.config = managerHandler.getPlugin().getConfig();
     }
 
     public ItemStack SERVER_SELECTOR = build(getMaterialFromConfigString("serverSelector"), getItemNameFromConfig("serverSelector"));
@@ -36,6 +41,29 @@ public class ItemHandler extends Manager {
     public ItemStack getSettingsItem() {
         return SETTINGS;
     }
+
+    public void addItemsToInventory(Player player) {
+        if (config.getBoolean(getItemBoolean("serverSelector"))) {
+            player.getInventory().setItem(0, getServerSelectorItem());
+        }
+
+        if (config.getBoolean(getItemBoolean("serverStore"))) {
+            player.getInventory().setItem(1, getServerStoreItem());
+        }
+
+        if (config.getBoolean(getItemBoolean("speedBoost"))) {
+            player.getInventory().setItem(2, getSpeedBoostItem());
+        }
+
+        if (config.getBoolean(getItemBoolean("settings"))) {
+            player.getInventory().setItem(8, getSettingsItem());
+        }
+    }
+
+    String getItemBoolean(String string) {
+        return "items." + string + ".enabled";
+    }
+
 
     public Material getMaterialFromConfigString(String string) {
         return Material.getMaterial(managerHandler.getPlugin().getConfig().getString("items." + string + ".item"));

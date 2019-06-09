@@ -31,24 +31,8 @@ public class PlayerListener implements Listener {
         plugin.getPlayerMap().put(player.getUniqueId(), player);
         player.getInventory().clear();
 
-        this.addItemsToInventory(player);
-    }
+        plugin.getManagerHandler().getItemHandler().addItemsToInventory(player);
 
-    void addItemsToInventory(Player player) {
-        if (config.getBoolean(getItemBoolean("serverSelector"))) {
-            player.getInventory().setItem(0, plugin.getManagerHandler().getItemHandler().getServerSelectorItem());
-        }
 
-        if (config.getBoolean(getItemBoolean("serverStore"))) {
-            player.getInventory().setItem(1, plugin.getManagerHandler().getItemHandler().getServerStoreItem());
-        }
-
-        if (config.getBoolean(getItemBoolean("speedBoost"))) {
-            player.getInventory().setItem(2, plugin.getManagerHandler().getItemHandler().getSpeedBoostItem());
-        }
-    }
-
-    String getItemBoolean(String string) {
-        return "items." + string + ".enabled";
     }
 }
