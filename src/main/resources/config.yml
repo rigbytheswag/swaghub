@@ -1,16 +1,39 @@
+features:
+  doubleJump: true
+
+disable:
+  # This option will disable weather from changing
+  weather: true
+
+  # This option will always disable creature spawning UNLESS it is a custom spawn (e.g by mob eggs)
+  creatureSpawn: true
+
+  # Options for player particular actions.
+  player:
+    drop-items: true
+    damage: true
+    hunger: true
+    inventory-use: true
+    place-blocks: true
+    break-blocks: true
+
+
 items:
   serverSelector:
     enabled: true
     item: COMPASS
     name: "&a&lServer Selector"
+
   serverStore:
     enabled: true
     item: DIAMOND
     name: "&9Store"
+
   speedBoost:
     enabled: true
     item: SUGAR
     name: "&bGotta go Fast"
+
   settings:
     enabled: true
     item: COMPASS

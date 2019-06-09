@@ -2,6 +2,9 @@ package me.rigbytheswag.swaghub;
 
 import com.google.common.collect.Maps;
 import me.rigbytheswag.swaghub.listeners.PlayerListener;
+import me.rigbytheswag.swaghub.listeners.PlayerMiscListener;
+import me.rigbytheswag.swaghub.listeners.WorldListener;
+import me.rigbytheswag.swaghub.listeners.features.DoubleJumpListener;
 import me.rigbytheswag.swaghub.manager.ManagerHandler;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -35,6 +38,13 @@ public final class HubPlugin extends JavaPlugin {
 
     private void registerListeners() {
         new PlayerListener(this);
+        new PlayerMiscListener(this);
+        new WorldListener(this);
+
+        if (getConfig().getBoolean("features.doubleJump")) {
+            getServer().getPluginManager().registerEvents(new DoubleJumpListener(), this);
+        }
+
     }
 
     public Map<UUID, Player> getPlayerMap() {
