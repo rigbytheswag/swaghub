@@ -30,7 +30,7 @@ public class DoubleJumpListener implements Listener {
     // now we're going to make sure the player can double jump again once they touch ground
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
-        Player player = (Player) event.getPlayer();
+        Player player = event.getPlayer();
 
         if (!player.getAllowFlight()) {
             if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() != Material.AIR) {
